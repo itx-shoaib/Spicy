@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Blog {% endblock %}
+{% block body %}
+{% load static %}
+
+<div class="main-wrapper">
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container">
+				{% for items in post %}
+			    <div class="item mb-5">
+				    <div class="media">
+					    <img class="mr-3 img-fluid  img-thumbnail post-thumb d-none d-md-flex" style="width: 308px;" src="/media/{{ items.image }}" alt="{{ items.post_id }}">
+					    <div class="media-body">
+						    <h3 class="title mb-1"><a href="/blog/blogPost/{{items.post_id}}">{{items.title}}</a></h3>
+						    <div class="meta mb-1"><span class="date">{{items.dateStamp}}</span><span class="time">(5 min read)</span><span class="comment"><a href="#">(NO comments)</a></span></div>
+						    <div class="intro">{{items.content| truncatechars:300}}</div>
+						    <a class="more-link" href="/blog/blogPost/{{items.post_id}}">Read more &rarr;</a>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+
+			    </div><!--//item-->
+				{% endfor %}
+			</div>
+<!--				Temporary-->
+<!--<div class="container">-->
+<!--	<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
+<!--        <div class="col p-4 d-flex flex-column position-static">-->
+<!--          <strong class="d-inline-block mb-2 text-primary">World</strong>-->
+<!--          <h3 class="mb-0">Featured post</h3>-->
+<!--          <div class="mb-1 text-muted">Nov 12</div>-->
+<!--          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>-->
+<!--          <a href="#" class="stretched-link">Continue reading</a>-->
+<!--        </div>-->
+<!--        <div class="col-auto d-none d-lg-block">-->
+<!--          <img class="bd-placeholder-img my-3" width="400" height="250"  src="/media/blog/images/noodles.jpg">-->
+
+<!--        </div>-->
+<!--	</div>-->
+<!--</div>-->
+</section>
+{% endblock %}
